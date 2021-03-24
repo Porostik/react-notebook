@@ -44,6 +44,7 @@ export const routesPath = {
   registrationPage: '/registration',
   editCustomerPage: '/editCustomerPage',
   addCustomerPage: '/addCustomer',
+  errorPage: '/errorPage',
 };
 
 export const socilas = {

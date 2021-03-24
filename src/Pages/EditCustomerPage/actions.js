@@ -7,19 +7,17 @@ export const addCustomer = (newCustomer, history) => async (dispatch) => {
     dispatch(updateCustomer(newCustomer));
     history.push(routesPath.customersPage);
   } catch (e) {
-    dispatch(errorLoading('Error'));
-    console.log(e);
+    history.push(routesPath.errorPage);
   }
 };
 
-export const fetchCunstomer = (id) => async (dispatch) => {
+export const fetchCunstomer = (id, history) => async (dispatch) => {
   dispatch(startLoading());
   try {
     const currentCustomer = await firebase.getCustomer(id);
     dispatch(setEditCustomer(currentCustomer.val()));
   } catch (e) {
-    dispatch(errorLoading('Error'));
-    console.log(e);
+    history.push(routesPath.errorPage);
   }
 };
 
@@ -30,15 +28,9 @@ export const updateCustomerFetch = (customer, history) => async (dispatch) => {
     dispatch(updateCustomer(customer));
     history.push(routesPath.customersPage);
   } catch (e) {
-    dispatch(errorLoading());
-    console.log(e);
+    history.push(routesPath.errorPage);
   }
 };
-
-const errorLoading = (error) => ({
-  type: editCustomerTypes.setError,
-  payload: error,
-});
 
 const startLoading = () => ({
   type: editCustomerTypes.startLoading,

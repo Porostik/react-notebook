@@ -17,7 +17,7 @@ function CustomerForm() {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(fetchCunstomer(id));
+    dispatch(fetchCunstomer(id, history));
   }, []);
 
   const onSubmit = (customer) => {
