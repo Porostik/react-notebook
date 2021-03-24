@@ -20,12 +20,14 @@ const styles = makeStyles((theme) => ({
   socialsList: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexGrow: 0.5,
-    padding: '0px 30px',
   },
   socialLink: {
     color: theme.color,
-    marginLeft: 20,
+    marginLeft: 10,
+  },
+  socialsPlaceholder: {
+    color: theme.color,
+    textAlign: 'center',
   },
   avatarIcon: {
     flexGrow: 0.1,
