@@ -16,7 +16,7 @@ function SearchForm({ onSubmit }) {
       onSubmit={(values) => onSubmit(values)}>
       {() => (
         <Form>
-          <Grid container justify="space-between" alignItems="center">
+          <Grid container justify="space-around" alignItems="center">
             <Field name="filterType" as={FilterSelect} />
             <Field name="searchValue" variant="outlined" className={styles.input} as={TextField} />
             <IconButton className={styles.button} type="submit">

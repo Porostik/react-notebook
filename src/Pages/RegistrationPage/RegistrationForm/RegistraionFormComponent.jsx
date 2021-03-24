@@ -1,12 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { Button } from '@material-ui/core';
+import { Box, Button, Link } from '@material-ui/core';
 
 import useStyles from './styles';
 import Input from '../../shared/Input';
 import validator from './validation';
+import Controls from 'Pages/shared/Controls/Controls';
+import { routesPath } from 'constants.js';
 
-function RegistraionFormComponent({ onSubmit }) {
+function RegistraionFormComponent({ onSubmit, isLoading }) {
   const styles = useStyles();
 
   return (
@@ -25,9 +27,16 @@ function RegistraionFormComponent({ onSubmit }) {
             as={Input}
             name="repeatedPassword"
           />
-          <Button className={styles.button} type="submit">
-            Зарегистрироваться
-          </Button>
+          <Controls isLoading={isLoading}>
+            <Box className={styles.buttonsBox}>
+              <Button className={styles.button} type="submit">
+                Зарегистрироваться
+              </Button>
+              <Link href={routesPath.loginPage} className={styles.link}>
+                Войти
+              </Link>
+            </Box>
+          </Controls>
         </Form>
       )}
     </Formik>

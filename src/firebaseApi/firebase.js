@@ -37,39 +37,44 @@ class Firebase {
 
   getCustomers() {
     const currentId = this.auth.currentUser.uid;
-    const customersRef = this.db.ref(`${currentId}/customers`);
+    let customersRef = this.db.ref(`${currentId}/customers`);
+
+    if (this.auth.currentUser.isAnonymous) customersRef = this.db.ref(`demo`);
+
     return customersRef.once('value', (snapshot) => snapshot.val());
   }
 
   getCustomer(id) {
     const currentId = this.auth.currentUser.uid;
-    const customersRef = this.db.ref(`${currentId}/customers/${id}`);
-    return customersRef.once('value', (snapshot) => snapshot.val());
+    let customerRef = this.db.ref(`${currentId}/customers/${id}`);
+
+    if (this.auth.currentUser.isAnonymous) customerRef = this.db.ref(`demo/${id}`);
+
+    return customerRef.once('value', (snapshot) => snapshot.val());
   }
 
   addNewCustomer(customer) {
+    if (this.auth.currentUser.isAnonymous) return Promise.resolve();
+
     const currentId = this.auth.currentUser.uid;
     const customerRef = this.db.ref(`${currentId}/customers/${customer.uid}`);
     return customerRef.set(customer);
   }
 
   updateCstuomer(customer) {
+    if (this.auth.currentUser.isAnonymous) return Promise.resolve();
+
     const currentId = this.auth.currentUser.uid;
     const customerRef = this.db.ref(`${currentId}/customers/${customer.uid}`);
     return customerRef.update(customer);
   }
 
-  createOrUpdateCustomer(customer) {
+  deleteCustomer(id) {
+    if (this.auth.currentUser.isAnonymous) return Promise.resolve();
+
     const currentId = this.auth.currentUser.uid;
-    const customerRef = this.db.ref(`${currentId}/customers/${customer.uid}`);
-    const customersRef = this.db.ref(`${currentId}/customers`);
-    customerRef.once('value', (snapshot) => {
-      if (snapshot.exists()) {
-        customerRef.update(customer);
-      } else {
-        customersRef.set(customer);
-      }
-    });
+    const customerRef = this.db.ref(`${currentId}/customers/${id}`);
+    return customerRef.remove();
   }
 }
 

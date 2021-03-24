@@ -1,3 +1,5 @@
+import { orderBy } from 'lodash';
+
 export const converCustomerToReply = (customer) => {
   customer.socials = customer.socials || [];
   customer.initials = customer.fullName.surname[0] + customer.fullName.firstname[0];
@@ -14,4 +16,20 @@ export const converCustomerToFirebase = (customer) => {
   delete customer.inititals;
 
   return customer;
+};
+
+export const removeCustomerAndGetNewCustomersObj = (customers, id) => {
+  let newCustomers = { ...customers };
+  delete newCustomers[id];
+  if (Object.values(newCustomers) < 1) newCustomers = null;
+  return newCustomers;
+};
+
+const importantFirstFirstFunc = (list, paramValue) => {
+  if (!paramValue) return list;
+  return orderBy(list, 'isImportant', 'desc');
+};
+
+export const paramitersFuctions = {
+  importantFirst: importantFirstFirstFunc,
 };

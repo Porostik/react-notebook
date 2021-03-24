@@ -7,6 +7,7 @@ const styles = makeStyles((theme) => ({
     marginTop: 40,
     borderRadius: 5,
     padding: 20,
+    minHeight: 500,
   },
 }));
 

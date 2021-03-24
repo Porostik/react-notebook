@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { FieldArray } from 'formik';
+import PropTypes from 'prop-types';
 
 import SocialItem from './Item';
 import useStyles from './styles';
@@ -43,5 +44,13 @@ function SocialsComponent({ socials }) {
     />
   );
 }
+
+SocialsComponent.propTypes = {
+  socials: PropTypes.array,
+};
+
+SocialsComponent.defaultProps = {
+  socials: [],
+};
 
 export default SocialsComponent;

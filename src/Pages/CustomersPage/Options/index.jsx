@@ -12,7 +12,7 @@ function Options() {
   const styles = useStyles();
 
   return (
-    <Grid className={styles.root} container item spacing={6}>
+    <Grid className={styles.root} container item spacing={6} justify="flex-end">
       <Grid item xs={12}>
         <Search />
       </Grid>

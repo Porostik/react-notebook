@@ -5,11 +5,11 @@ const styles = makeStyles((theme) => ({
     minHeight: '480px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     alignItems: 'center',
   },
   title: {
     color: theme.color,
+    marginBottom: 30,
   },
   link: {
     color: theme.color,

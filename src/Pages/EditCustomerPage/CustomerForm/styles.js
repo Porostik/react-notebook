@@ -21,7 +21,7 @@ const styles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '50vh',
+    height: '60vh',
   },
   loader: {
     color: theme.primary,

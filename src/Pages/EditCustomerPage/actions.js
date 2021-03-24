@@ -1,6 +1,17 @@
 import { customersTypes, routesPath, editCustomerTypes } from 'constants.js';
 import { firebase } from 'firebaseApi';
 
+export const addCustomer = (newCustomer, history) => async (dispatch) => {
+  try {
+    await firebase.addNewCustomer(newCustomer);
+    dispatch(updateCustomer(newCustomer));
+    history.push(routesPath.customersPage);
+  } catch (e) {
+    dispatch(errorLoading('Error'));
+    console.log(e);
+  }
+};
+
 export const fetchCunstomer = (id) => async (dispatch) => {
   dispatch(startLoading());
   try {

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Typography, Link } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
-import { routesPath } from 'constants.js';
 import useStyles from './styles';
 import RegistrationForm from './RegistrationForm';
 
@@ -14,9 +13,6 @@ function RegistrationPage() {
         Регистрация
       </Typography>
       <RegistrationForm />
-      <Link href={routesPath.loginPage} className={styles.link}>
-        Войти
-      </Link>
     </Box>
   );
 }

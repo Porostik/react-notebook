@@ -11,7 +11,6 @@ function App() {
     <Box className={styles.root}>
       <CssBaseline />
       <Header />
-
       <Container>
         <Box className={styles.main}>
           <PagesRoutes />

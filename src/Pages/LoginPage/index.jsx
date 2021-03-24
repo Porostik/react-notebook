@@ -1,26 +1,40 @@
 import React from 'react';
-import { Box, Typography, Link, Button } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
-import { routesPath, customersTypes } from 'constants.js';
+import { customersTypes, routesPath } from 'constants.js';
 import FirebaseContext from 'firebaseApi/FirebaseContext';
 import useStyles from './styles';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm/LoginFormComponent';
+import { useDispatch } from 'react-redux';
 
 function LoginPage() {
   const styles = useStyles();
-  const firebase = React.useContext(FirebaseContext);
   const history = useHistory();
+  const firebase = React.useContext(FirebaseContext);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const guestSingIn = async () => {
+    setIsLoading(true);
     try {
       await firebase.loginAsGuest();
-      dispatch({ type: customersTypes.openGusetWarning });
+      history.push(routesPath.customersPage);
+      dispatch({ type: customersTypes.setDemo });
+    } catch (e) {
+      setIsLoading(false);
+    }
+  };
+
+  const singIn = async (user, { setStatus }) => {
+    setIsLoading(true);
+    setStatus(false);
+    try {
+      await firebase.login(user.email, user.password);
       history.push(routesPath.customersPage);
     } catch (e) {
-      console.log(e);
+      setStatus('Неверный лоигин или пароль');
+      setIsLoading(false);
     }
   };
 
@@ -29,13 +43,7 @@ function LoginPage() {
       <Typography className={styles.title} variant="h3" component="h1">
         Вход
       </Typography>
-      <LoginForm />
-      <Button className={styles.button} onClick={guestSingIn}>
-        Войти как гость
-      </Button>
-      <Link href={routesPath.registrationPage} className={styles.link}>
-        Зарегистрироваться
-      </Link>
+      <LoginForm onSubmit={singIn} isLoading={isLoading} demoSingIn={guestSingIn} />
     </Box>
   );
 }

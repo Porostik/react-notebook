@@ -1,9 +1,10 @@
 import React from 'react';
-import { GuestWarWningPopup } from 'Components';
+import { Grid } from '@material-ui/core';
+
 import CustomersList from './CustomersList';
 import ModalsRoutes from 'Components/PagesRoutes/ModalsRoutes';
-import { Grid } from '@material-ui/core';
 import Options from './Options';
+import DemoWarning from './DemoWarning';
 
 function CustomersPage() {
   return (
@@ -14,8 +15,8 @@ function CustomersPage() {
       <Grid item xs={6}>
         <Options />
       </Grid>
-      <GuestWarWningPopup />
       <ModalsRoutes />
+      <DemoWarning />
     </Grid>
   );
 }

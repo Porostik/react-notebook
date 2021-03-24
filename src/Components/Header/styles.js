@@ -6,6 +6,7 @@ const styles = makeStyles((theme) => ({
     height: 50,
     alignItems: 'center',
     minWidth: '15%',
+    marginLeft: 40,
   },
   button: {
     ...theme.button,

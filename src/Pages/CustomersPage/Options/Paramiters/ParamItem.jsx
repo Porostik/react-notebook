@@ -12,6 +12,7 @@ function ParamItem({ text, isChecked, onChange, name }) {
 
   return (
     <FormControlLabel
+      className={styles.paramText}
       control={<Checkbox onChange={handleChange} checked={isChecked} className={styles.checkbox} />}
       label={text}
     />

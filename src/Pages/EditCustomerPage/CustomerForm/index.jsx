@@ -1,14 +1,11 @@
 import React from 'react';
-import { FirebaseContext } from 'firebaseApi';
-import { useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { getDefaultCustomer } from 'constants.js';
 import CustomerFormComponent from './CustomerFormComponent';
 import CustomersFormLoader from './CustomerFormLoader';
-import { fetchCunstomer, updateCustomerFetch } from '../actions';
+import { addCustomer, fetchCunstomer, updateCustomerFetch } from '../actions';
 
 function CustomerForm() {
   const { id } = useParams();
@@ -18,19 +15,19 @@ function CustomerForm() {
   }));
   const history = useHistory();
   const dispatch = useDispatch();
-  const firebase = useContext(FirebaseContext);
-  const [user] = useAuthState(firebase.auth);
 
   React.useEffect(() => {
-    user && dispatch(fetchCunstomer(id));
-  }, [user]);
+    dispatch(fetchCunstomer(id));
+  }, []);
 
   const onSubmit = (customer) => {
-    dispatch(updateCustomerFetch(customer, history));
+    customer
+      ? dispatch(updateCustomerFetch(customer, history))
+      : dispatch(addCustomer(customer, history));
   };
 
-  return isLoading || !user ? (
-    <CustomersFormLoader color="primary" />
+  return isLoading ? (
+    <CustomersFormLoader />
   ) : (
     <CustomerFormComponent onSubmit={onSubmit} initialValue={customer || getDefaultCustomer()} />
   );

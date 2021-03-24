@@ -1,34 +1,22 @@
 import { customersTypes, filterValues, optionTypes } from 'constants.js';
+import { removeCustomerAndGetNewCustomersObj } from 'Pages/utils';
 
 const initialState = {
-  guestWarning: {
-    active: false,
-  },
   isLoading: false,
   customers: [],
   error: false,
-  nameFilter: { type: filterValues[0].value, value: null },
+  nameFilter: { type: filterValues[0].value, value: '' },
   paramiters: {
     importantFirst: false,
+  },
+  demo: {
+    isActive: false,
+    openDemoPopup: false,
   },
 };
 
 const customersPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case customersTypes.openGusetWarning:
-      return {
-        ...state,
-        guestWarning: {
-          active: true,
-        },
-      };
-    case customersTypes.closeGusetWarning:
-      return {
-        ...state,
-        guestWarning: {
-          active: false,
-        },
-      };
     case customersTypes.custmersLoadingStart:
       return {
         ...state,
@@ -57,7 +45,7 @@ const customersPageReducer = (state = initialState, action) => {
         ...state,
         nameFilter: action.payload,
       };
-    case optionTypes.setParamiter: {
+    case optionTypes.setParamiter:
       return {
         ...state,
         paramiters: {
@@ -65,7 +53,30 @@ const customersPageReducer = (state = initialState, action) => {
           [action.payload.name]: action.payload.value,
         },
       };
-    }
+    case customersTypes.deleteCustomer:
+      const newCustomers = removeCustomerAndGetNewCustomersObj(state.customers, action.payload);
+      return {
+        ...state,
+        customers: newCustomers,
+      };
+    case customersTypes.setDemo:
+      return {
+        ...state,
+        demo: {
+          isActive: true,
+          openDemoPopup: true,
+        },
+      };
+    case customersTypes.closeDemoPopup:
+      return {
+        ...state,
+        demo: {
+          ...state.demo,
+          openDemoPopup: false,
+        },
+      };
+    case customersTypes.setInitialState:
+      return initialState;
     default:
       return state;
   }

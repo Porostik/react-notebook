@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { routesPath } from 'constants.js';
-import { EditCustomerPage } from 'Pages/EditCustomerPage';
+import { EditCustomerPage } from 'Pages';
 import { Dialog } from '@material-ui/core';
 
 function ModalsRoutes() {

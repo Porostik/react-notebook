@@ -6,6 +6,7 @@ const styles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     borderRadius: 5,
+    marginBottom: '20px',
   },
   mainInfo: {
     width: '100%',
@@ -44,6 +45,9 @@ const styles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginTop: 20,
   },
+  descriptionWrap: {
+    width: '100%',
+  },
   description: {
     backgroundColor: theme.secondary,
     padding: '10px 20px',
@@ -56,6 +60,17 @@ const styles = makeStyles((theme) => ({
     alignSelf: 'flex-end',
     marginTop: 15,
     backgroundColor: theme.secondary,
+  },
+  deleteButton: {
+    ...theme.button,
+    alignSelf: 'flex-start',
+    marginTop: 15,
+    backgroundColor: '#ff0000',
+    color: '#ffffff ',
+  },
+  buttonWrap: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 }));
 
