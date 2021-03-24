@@ -51,6 +51,7 @@ export const socilas = {
   linkedIn: LinkedIn,
   instagram: Instagram,
   twitter: Twitter,
+  unselected: Language,
 };
 
 export const socialsArr = [

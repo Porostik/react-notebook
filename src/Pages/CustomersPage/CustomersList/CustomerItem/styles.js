@@ -11,15 +11,17 @@ const styles = makeStyles((theme) => ({
   mainInfo: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
   },
   importantItem: {
     minWidth: 25,
   },
   socialsList: {
+    width: '50%',
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginLeft: 30,
   },
   socialLink: {
     color: theme.color,
@@ -29,9 +31,6 @@ const styles = makeStyles((theme) => ({
     color: theme.color,
     textAlign: 'center',
   },
-  avatarIcon: {
-    flexGrow: 0.1,
-  },
   avatar: {
     width: 60,
     height: 60,
@@ -39,8 +38,13 @@ const styles = makeStyles((theme) => ({
     color: theme.color,
   },
   nameBlock: {
-    flexGrow: 0.2,
+    width: 100,
     color: theme.color,
+    marginLeft: 10,
+  },
+  nameItem: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   descriptionBlock: {
     display: 'flex',

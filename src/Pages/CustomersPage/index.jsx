@@ -8,8 +8,8 @@ import DemoWarning from './DemoWarning';
 
 function CustomersPage() {
   return (
-    <Grid container spacing={10}>
-      <Grid item xs={5}>
+    <Grid container spacing={5}>
+      <Grid item xs={6}>
         <CustomersList />
       </Grid>
       <Grid item xs={6}>

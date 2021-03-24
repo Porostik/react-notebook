@@ -26,18 +26,16 @@ function CustomerItem({ customer, deleteCustomer }) {
   return (
     <ListItem className={styles.root}>
       <Box className={styles.mainInfo}>
-        {customer.isImportant && (
-          <ListItemIcon className={styles.importantItem}>
-            <PriorityHigh />
-          </ListItemIcon>
-        )}
+        <ListItemIcon className={styles.importantItem}>
+          {customer.isImportant && <PriorityHigh />}
+        </ListItemIcon>
         <ListItemAvatar className={styles.avatarIcon}>
           <Avatar className={styles.avatar}>{customer.initials}</Avatar>
         </ListItemAvatar>
         <Box className={styles.nameBlock}>
-          <Typography>{customer.fullName.surname}</Typography>
-          <Typography>{customer.fullName.firstname}</Typography>
-          <Typography>{customer.fullName.lastname}</Typography>
+          <Typography className={styles.nameItem}>{customer.fullName.surname}</Typography>
+          <Typography className={styles.nameItem}>{customer.fullName.firstname}</Typography>
+          <Typography className={styles.nameItem}>{customer.fullName.lastname}</Typography>
         </Box>
         <SocialsBlock socialsList={Object.values(customer.socials)} />
         <IconButton onClick={() => setDesriptionOpen((prev) => !prev)}>
