@@ -34,7 +34,7 @@ function LoginPageComponent({ onSubmit, isLoading, demoSingIn }) {
                 Войти
               </Button>
               <Button className={styles.button} onClick={demoSingIn}>
-                Войти как гость
+                Войти в демо режим
               </Button>
               <Link href={routesPath.registrationPage} className={styles.link}>
                 Зарегистрироваться
