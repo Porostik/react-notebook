@@ -8,7 +8,7 @@ function ErrorPage() {
   const history = useHistory();
 
   const returnToMainPage = () => {
-    history.push(routesPath.customersPage);
+    history.push(routesPath.rootRoute + routesPath.customersPage);
   };
 
   return <ErrorPageComponent buttonOnClick={returnToMainPage} />;

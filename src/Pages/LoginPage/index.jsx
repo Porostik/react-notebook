@@ -19,7 +19,7 @@ function LoginPage() {
     setIsLoading(true);
     try {
       await firebase.loginAsGuest();
-      history.push(routesPath.customersPage);
+      history.push(routesPath.rootRoute + routesPath.customersPage);
       dispatch({ type: customersTypes.setDemo });
     } catch (e) {
       setIsLoading(false);
@@ -31,7 +31,7 @@ function LoginPage() {
     setStatus(false);
     try {
       await firebase.login(user.email, user.password);
-      history.push(routesPath.customersPage);
+      history.push(routesPath.rootRoute + routesPath.customersPage);
     } catch (e) {
       setStatus('Неверный лоигин или пароль');
       setIsLoading(false);

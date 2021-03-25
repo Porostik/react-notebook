@@ -9,18 +9,23 @@ import AuthRoute from './AuthRoute';
 function PagesRoutes() {
   return (
     <Switch>
-      <AuthRoute
-        path={routesPath.loginPage}
-        component={LoginPage}
-        redirectUrl={routesPath.customersPage}
-      />
-      <AuthRoute
-        path={routesPath.registrationPage}
-        component={RegistrationPage}
-        redirectUrl={routesPath.customersPage}
-      />
-      <Route exact path={routesPath.errorPage} component={ErrorPage} />
-      <PrivateRoute path={routesPath.customersPage} component={CustomersPage} />
+      <Route path={routesPath.rootRoute}>
+        <AuthRoute
+          path={routesPath.rootRoute + routesPath.loginPage}
+          component={LoginPage}
+          redirectUrl={routesPath.customersPage}
+        />
+        <AuthRoute
+          path={routesPath.rootRoute + routesPath.registrationPage}
+          component={RegistrationPage}
+          redirectUrl={routesPath.customersPage}
+        />
+        <Route exact path={routesPath.errorPage} component={ErrorPage} />
+        <PrivateRoute
+          path={routesPath.rootRoute + routesPath.customersPage}
+          component={CustomersPage}
+        />
+      </Route>
     </Switch>
   );
 }

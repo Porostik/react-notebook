@@ -32,7 +32,7 @@ function RegistraionFormComponent({ onSubmit, isLoading }) {
               <Button className={styles.button} type="submit">
                 Зарегистрироваться
               </Button>
-              <Link href={routesPath.loginPage} className={styles.link}>
+              <Link href={routesPath.rootRoute + routesPath.loginPage} className={styles.link}>
                 Войти
               </Link>
             </Box>

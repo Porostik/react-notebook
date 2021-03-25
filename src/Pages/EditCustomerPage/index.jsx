@@ -14,7 +14,7 @@ function EditCustomerPage() {
   return (
     <Paper className={styles.root}>
       <Grid container justify="flex-end">
-        <IconButton onClick={() => history.push(routesPath.customersPage)}>
+        <IconButton onClick={() => history.push(routesPath.rootRoute + routesPath.customersPage)}>
           <CloseIcon />
         </IconButton>
       </Grid>
