@@ -21,7 +21,12 @@ function CustomerItem({ customer, deleteCustomer }) {
   const [isDesriptionOpen, setDesriptionOpen] = React.useState(false);
   const history = useHistory();
 
-  const editCustomer = () => history.push(`${routesPath.editCustomerPage}/${customer.uid}`);
+  const editCustomer = () =>
+    history.push(
+      routesPath.rootRoute +
+        routesPath.customersPage +
+        `${routesPath.editCustomerPage}/${customer.uid}`,
+    );
 
   return (
     <ListItem className={styles.root}>

@@ -3,6 +3,7 @@ import { FirebaseContext } from 'firebaseApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Redirect } from 'react-router-dom';
 import PagePlaceholder from 'Components/PagePlaceholder';
+import { routesPath } from 'constants.js';
 
 function PrivateRoute({ component: Component, ...rest }) {
   const firebase = React.useContext(FirebaseContext);
@@ -11,7 +12,12 @@ function PrivateRoute({ component: Component, ...rest }) {
   return loading ? (
     <PagePlaceholder />
   ) : (
-    <Route {...rest} render={() => (user ? <Component /> : <Redirect to="/login" />)} />
+    <Route
+      {...rest}
+      render={() =>
+        user ? <Component /> : <Redirect to={routesPath.rootRoute + routesPath.loginPage} />
+      }
+    />
   );
 }
 

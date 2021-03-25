@@ -36,7 +36,9 @@ function LoginPageComponent({ onSubmit, isLoading, demoSingIn }) {
               <Button className={styles.button} onClick={demoSingIn}>
                 Войти в демо режим
               </Button>
-              <Link href={routesPath.registrationPage} className={styles.link}>
+              <Link
+                href={routesPath.rootRoute + routesPath.registrationPage}
+                className={styles.link}>
                 Зарегистрироваться
               </Link>
             </Box>

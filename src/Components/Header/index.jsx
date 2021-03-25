@@ -19,7 +19,7 @@ function Header() {
   const signOut = async () => {
     try {
       await firebase.logout();
-      history.push(routesPath.loginPage);
+      history.push(routesPath.rootRoute + routesPath.loginPage);
       dispatch({ type: customersTypes.setInitialState });
     } catch (e) {
       console.log(e);

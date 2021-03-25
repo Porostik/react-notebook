@@ -14,7 +14,7 @@ function RegistrationForm() {
     setIsLoading(true);
     try {
       await firebase.registration(user.email, user.password);
-      history.push(routesPath.customersPage);
+      history.push(routesPath.rootRoute + routesPath.customersPage);
     } catch (e) {
       setIsLoading(false);
     }

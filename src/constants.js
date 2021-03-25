@@ -39,10 +39,11 @@ export const demoModeTypes = {
 };
 
 export const routesPath = {
-  customersPage: '/',
+  rootRoute: '/react-notebook',
+  customersPage: '/customers',
   loginPage: '/login',
   registrationPage: '/registration',
-  editCustomerPage: '/editCustomerPage',
+  editCustomerPage: '/editCustomer',
   addCustomerPage: '/addCustomer',
   errorPage: '/errorPage',
 };

@@ -18,7 +18,13 @@ function Options() {
       </Grid>
       <Paramiters />
       <Grid item container justify="center">
-        <Button className={styles.button} onClick={() => history.push(routesPath.addCustomerPage)}>
+        <Button
+          className={styles.button}
+          onClick={() =>
+            history.push(
+              routesPath.rootRoute + routesPath.customersPage + routesPath.addCustomerPage,
+            )
+          }>
           Добавить
         </Button>
       </Grid>
