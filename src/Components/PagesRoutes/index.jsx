@@ -19,6 +19,7 @@ function PagesRoutes() {
           path={routesPath.rootRoute + routesPath.registrationPage}
           component={RegistrationPage}
           redirectUrl={routesPath.rootRoute + routesPath.customersPage}
+          redirectUrl={routesPath.customersPage}
         />
         <Route exact path={routesPath.errorPage} component={ErrorPage} />
         <PrivateRoute
